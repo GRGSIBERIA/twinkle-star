@@ -10,10 +10,11 @@ namespace tw
 	{
 		int tick;
 		int size;
+		double power;
 		std::vector<short> sin_array;
 
 	public:
-		Sin(const double frequency, const int sampling_rate);
+		Sin(const double frequency, const int sampling_rate, const double power);
 
 		const short getSin();
 	};

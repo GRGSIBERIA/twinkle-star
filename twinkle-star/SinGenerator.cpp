@@ -9,21 +9,21 @@ inline const int computeSize(const double frequency, const int sampling_rate)
 }
 
 
-inline const short computeSin(const double frequency, const double time)
+inline const short computeSin(const double frequency, const double time, const double power)
 {
-	return (short)(sin(2.0 * M_PI * frequency * time) * 32767.);
+	return (short)(power * sin(2.0 * M_PI * frequency * time) * 32767.);
 }
 
 
-tw::Sin::Sin(const double frequency, const int sampling_rate)
-	: tick(0), size(computeSize(frequency, sampling_rate)), sin_array()
+tw::Sin::Sin(const double frequency, const int sampling_rate, const double power)
+	: tick(0), size(computeSize(frequency, sampling_rate)), sin_array(), power(power)
 {
 	const double delta_time = 1. / sampling_rate;
 
 	sin_array.resize(size, 0);
 	for (int i = 0; i < size; ++i)
 	{
-		sin_array[i] = computeSin(frequency, delta_time * (double)i);
+		sin_array[i] = computeSin(frequency, delta_time * (double)i, power);
 	}
 
 	sin_array[(size_t)size - 1] = 0;
