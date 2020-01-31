@@ -28,3 +28,30 @@ tw::Sin::Sin(const double frequency, const int sampling_rate)
 
 	sin_array[(size_t)size - 1] = 0;
 }
+
+const short tw::Sin::getSin()
+{
+	const short val = sin_array[tick];
+	
+	if (++tick >= size)
+		tick = 0;
+
+	return val;
+}
+
+tw::Stack::Stack(const size_t sample_size)
+	: stack()
+{
+	stack.resize(sample_size, 0);
+}
+
+void tw::Stack::addSin(Sin& sin_wave)
+{
+	for (size_t i = 0; i < stack.size(); ++i)
+		stack[i] += sin_wave.getSin();
+}
+
+void tw::Stack::clear()
+{
+	std::fill(stack.begin(), stack.end(), 0);
+}
