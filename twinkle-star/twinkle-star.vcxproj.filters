@@ -373,5 +373,8 @@
     <ClInclude Include="SinGenerator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="God.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
