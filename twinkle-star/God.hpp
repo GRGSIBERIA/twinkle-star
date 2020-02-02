@@ -1,6 +1,6 @@
 #pragma once
 #include <Siv3D.hpp>
-#include "TinyASIO/TinyASIO.hpp"
+#include "SoundMakeController.hpp"
 
 namespace tw
 {
@@ -11,15 +11,9 @@ namespace tw
 		const Color accent_color(U"#DE1895");
 		const Color theme_color(U"#18DFC4");
 		const Color sad_color(U"#119987");
+
+		std::wstring driver_name;
+		SoundMakeController* controller;
+		bool succeeded = true;
 	}
-
-	class SoundMakeController : public asio::ControllerBase
-	{
-		static asio::OutputBuffer* output;
-
-	public:
-		
-	};
-
-	asio::OutputBuffer* tw::SoundMakeController::output = nullptr;
 }
