@@ -5,7 +5,7 @@
 
 inline const int computeSize(const double frequency, const int sampling_rate)
 {
-	return std::ceil((double)sampling_rate / frequency);
+	return (int)std::ceil((double)sampling_rate / frequency);
 }
 
 

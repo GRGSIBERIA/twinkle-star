@@ -354,3 +354,5 @@ MigrationBackup/
 *.exe
 *.html
 twinkle-star/App/AS_DEBUG/stats.txt
+
+TinyASIO/

@@ -94,6 +94,9 @@
     <Filter Include="Resource Files\example\font\LogoTypeGothic">
       <UniqueIdentifier>{b3586a98-5569-49e1-b9d6-cd80cf76ce9d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\TinyASIO">
+      <UniqueIdentifier>{5ff45500-3734-4822-a3be-274cc0fd2ad5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -375,6 +378,45 @@
     </ClInclude>
     <ClInclude Include="God.hpp">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundMaker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TinyASIO\Buffer.hpp">
+      <Filter>Header Files\TinyASIO</Filter>
+    </ClInclude>
+    <ClInclude Include="TinyASIO\Channel.hpp">
+      <Filter>Header Files\TinyASIO</Filter>
+    </ClInclude>
+    <ClInclude Include="TinyASIO\ControllerBase.hpp">
+      <Filter>Header Files\TinyASIO</Filter>
+    </ClInclude>
+    <ClInclude Include="TinyASIO\Driver.hpp">
+      <Filter>Header Files\TinyASIO</Filter>
+    </ClInclude>
+    <ClInclude Include="TinyASIO\Exception.hpp">
+      <Filter>Header Files\TinyASIO</Filter>
+    </ClInclude>
+    <ClInclude Include="TinyASIO\InputBackController.hpp">
+      <Filter>Header Files\TinyASIO</Filter>
+    </ClInclude>
+    <ClInclude Include="TinyASIO\InputOnlyController.hpp">
+      <Filter>Header Files\TinyASIO</Filter>
+    </ClInclude>
+    <ClInclude Include="TinyASIO\Interface.hpp">
+      <Filter>Header Files\TinyASIO</Filter>
+    </ClInclude>
+    <ClInclude Include="TinyASIO\Option.hpp">
+      <Filter>Header Files\TinyASIO</Filter>
+    </ClInclude>
+    <ClInclude Include="TinyASIO\Registry.hpp">
+      <Filter>Header Files\TinyASIO</Filter>
+    </ClInclude>
+    <ClInclude Include="TinyASIO\SDK.hpp">
+      <Filter>Header Files\TinyASIO</Filter>
+    </ClInclude>
+    <ClInclude Include="TinyASIO\TinyASIO.hpp">
+      <Filter>Header Files\TinyASIO</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -50,6 +50,7 @@
     <IntDir>$(SolutionDir)Intermediate\$(ProjectName)\Debug\Intermediate\</IntDir>
     <TargetName>$(ProjectName)(debug)</TargetName>
     <LocalDebuggerWorkingDirectory>$(ProjectDir)App</LocalDebuggerWorkingDirectory>
+    <SourcePath>$(SourcePath)</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -236,6 +237,19 @@
   <ItemGroup>
     <ClInclude Include="God.hpp" />
     <ClInclude Include="SinGenerator.h" />
+    <ClInclude Include="SoundMaker.h" />
+    <ClInclude Include="TinyASIO\Buffer.hpp" />
+    <ClInclude Include="TinyASIO\Channel.hpp" />
+    <ClInclude Include="TinyASIO\ControllerBase.hpp" />
+    <ClInclude Include="TinyASIO\Driver.hpp" />
+    <ClInclude Include="TinyASIO\Exception.hpp" />
+    <ClInclude Include="TinyASIO\InputBackController.hpp" />
+    <ClInclude Include="TinyASIO\InputOnlyController.hpp" />
+    <ClInclude Include="TinyASIO\Interface.hpp" />
+    <ClInclude Include="TinyASIO\Option.hpp" />
+    <ClInclude Include="TinyASIO\Registry.hpp" />
+    <ClInclude Include="TinyASIO\SDK.hpp" />
+    <ClInclude Include="TinyASIO\TinyASIO.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
