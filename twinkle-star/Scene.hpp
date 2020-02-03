@@ -53,7 +53,7 @@ namespace tw
 
 			if (!god::succeeded)
 			{
-				const auto text = U"Does not creates ASIO driver, please connect an audio interface.";
+				const auto text = U"Does not creates ASIO driver, please connect an audio interface.\nPlease, restart this software.";
 				font(text).draw(0, driver_pathes.Count() * 32 + 32, tw::god::font_color);
 			}
 		}
@@ -64,7 +64,28 @@ namespace tw
 	// 出力チャンネルを選択する
 	State SelectOutputChannel(const Font& font)
 	{
-		
+		font(U"出力するチャンネル番号を選択してください（イヤホン・スピーカーはそこへ繋げ）").draw(0, 0, god::font_color);
+
+		const int numof_outputs = god::controller->NumberOfOutputChannels();
+
+		for (int i = 0; i < numof_outputs; ++i)
+		{
+			const auto numch = i + 1;
+			const auto region = font(numch).draw(16, 32 * numch, god::font_color);
+			
+			if (region.mouseOver())
+			{
+				Circle(8, 32 * (numch + 1) - 16, 4).draw(god::font_color);
+				if (region.leftClicked())
+				{
+					if (god::succeeded = god::controller->InitializeDriver(i))
+						return State::CREATE_SOUND_SOURCE;
+				}
+			}
+
+			if (!god::succeeded)
+				font(U"HA HA YOUR DEAD!").draw(0, numof_outputs * 32 + 32, god::font_color);
+		}
 		
 
 		return State::SELECT_OUTPUT_CHANNEL;
