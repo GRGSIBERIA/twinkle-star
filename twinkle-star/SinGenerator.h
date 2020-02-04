@@ -11,12 +11,17 @@ namespace tw
 		int tick;
 		int size;
 		double power;
-		std::vector<short> sin_array;
+		std::vector<int> sin_array;
 
 	public:
+		/**
+		* @param frequency ü”g”
+		* @param sampling_rate ƒTƒ“ƒvƒŠƒ“ƒOü”g”
+		* @param power ³Œ·”g‚Ì‹­“xC0`1
+		*/
 		Sin(const double frequency, const int sampling_rate, const double power);
 
-		const short getSin();
+		const int getSin();
 	};
 
 	/**
@@ -33,7 +38,7 @@ namespace tw
 	*/
 	class Stack
 	{
-		std::vector<short> stack;
+		std::vector<int> stack;
 
 	public:
 		Stack(const size_t sample_size);

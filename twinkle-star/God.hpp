@@ -15,5 +15,6 @@ namespace tw
 		std::wstring driver_name;
 		SoundMakeController* controller;
 		bool succeeded = true;
+		bool start_flag = false;
 	}
 }

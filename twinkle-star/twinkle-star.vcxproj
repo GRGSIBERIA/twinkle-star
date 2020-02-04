@@ -239,7 +239,6 @@
     <ClInclude Include="Scene.hpp" />
     <ClInclude Include="SinGenerator.h" />
     <ClInclude Include="SoundMakeController.hpp" />
-    <ClInclude Include="SoundMaker.h" />
     <ClInclude Include="TinyASIO\Buffer.hpp" />
     <ClInclude Include="TinyASIO\Channel.hpp" />
     <ClInclude Include="TinyASIO\ControllerBase.hpp" />

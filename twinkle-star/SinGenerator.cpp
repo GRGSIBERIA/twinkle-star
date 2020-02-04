@@ -1,5 +1,6 @@
 #define _USE_MATH_DEFINES
 #include <cmath>
+#include <assert.h>
 #include "SinGenerator.h"
 
 
@@ -9,9 +10,9 @@ inline const int computeSize(const double frequency, const int sampling_rate)
 }
 
 
-inline const short computeSin(const double frequency, const double time, const double power)
+inline const int computeSin(const double frequency, const double time, const double power)
 {
-	return (short)(power * sin(2.0 * M_PI * frequency * time) * 32767.);
+	return (int)(power * sin(2.0 * M_PI * frequency * time) * INT_MAX);
 }
 
 
@@ -19,6 +20,8 @@ tw::Sin::Sin(const double frequency, const int sampling_rate, const double power
 	: tick(0), size(computeSize(frequency, sampling_rate)), sin_array(), power(power)
 {
 	const double delta_time = 1. / sampling_rate;
+
+	assert(power <= 1.0 || power >= 0.0);
 
 	sin_array.resize(size, 0);
 	for (int i = 0; i < size; ++i)
@@ -29,9 +32,9 @@ tw::Sin::Sin(const double frequency, const int sampling_rate, const double power
 	sin_array[(size_t)size - 1] = 0;
 }
 
-const short tw::Sin::getSin()
+const int tw::Sin::getSin()
 {
-	const short val = sin_array[tick];
+	const int val = sin_array[tick];
 	
 	if (++tick >= size)
 		tick = 0;
@@ -48,7 +51,7 @@ tw::Stack::Stack(const size_t sample_size)
 void tw::Stack::addSin(Sin& sin_wave)
 {
 	for (size_t i = 0; i < stack.size(); ++i)
-		stack[i] += sin_wave.getSin();
+		stack[i] += sin_wave.getSin();	// オーバーフローについては未定義
 }
 
 void tw::Stack::clear()

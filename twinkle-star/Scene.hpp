@@ -87,13 +87,24 @@ namespace tw
 				font(U"HA HA YOUR DEAD!").draw(0, numof_outputs * 32 + 32, god::font_color);
 		}
 		
-
 		return State::SELECT_OUTPUT_CHANNEL;
 	}
 
 
 	State CreateSoundSource(const Font& font)
 	{
+		if (s3d::SimpleGUI::Button(U"Ä¶", Vec2(0, 0), unspecified, !god::start_flag))
+		{
+			god::start_flag = true;
+			god::controller->Start();
+		}
+
+		if (s3d::SimpleGUI::Button(U"’âŽ~", Vec2(64, 0), unspecified, god::start_flag))
+		{
+			god::start_flag = false;
+			god::controller->Stop();
+		}
+
 		return State::CREATE_SOUND_SOURCE;
 	}
 }

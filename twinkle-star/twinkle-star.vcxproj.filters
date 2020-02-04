@@ -379,9 +379,6 @@
     <ClInclude Include="God.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SoundMaker.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="TinyASIO\Buffer.hpp">
       <Filter>Header Files\TinyASIO</Filter>
     </ClInclude>

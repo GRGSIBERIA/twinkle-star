@@ -7,7 +7,6 @@ namespace tw
 	{
 		static asio::OutputBuffer* output;
 
-		void* output_memory = nullptr;
 		int output_channel = -1;
 
 	public:
@@ -40,7 +39,9 @@ namespace tw
 
 		static void BufferSwitch(long index, long)
 		{
-
+			// int型でバッファリングしている
+			void* output_memory = output->GetBuffer(index);
+			memset(output_memory, 0, BufferSize());
 		}
 	};
 
