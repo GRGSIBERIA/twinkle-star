@@ -102,7 +102,7 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SinGenerator.cpp">
+    <ClCompile Include="SinManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -373,9 +373,6 @@
     </Xml>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SinGenerator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="God.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -419,6 +416,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SoundMakeController.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SinManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
