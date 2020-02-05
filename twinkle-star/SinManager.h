@@ -49,21 +49,22 @@ namespace tw
 	};
 
 	/**
-	* サイン波のジェネレータクラス
+	* サイン波の管理クラス
 	*/
 	class SinManager
 	{
 		std::vector<Sin> sines;
 		Stack stack;
-		const int sampling_rate;
 
 	public:
-		SinManager(const int sampling_rate);
+		SinManager(const int sample_size);
 
 		void addSin(const double frequency, const double power);
 
 		const int count() const;
 
 		Sin& getSin(const int index);
+
+		const Stack& getStack();
 	};
 }

@@ -79,12 +79,12 @@ void tw::Stack::clear()
 	std::fill(stack.begin(), stack.end(), 0);
 }
 
-tw::SinManager::SinManager(const int sampling_rate)
-	: sines(), stack(sampling_rate), sampling_rate(sampling_rate)
+tw::SinManager::SinManager(const int sample_size)
+	: sines(), stack(sample_size)
 {
 }
 
-void tw::SinManager::addSin(const double frequency, const double power)
+void tw::SinManager::addSin(const double frequency, const int sampling_rate, const double power)
 {
 	sines.emplace_back(frequency, sampling_rate, power);
 }
@@ -97,4 +97,12 @@ const int tw::SinManager::count() const
 tw::Sin& tw::SinManager::getSin(const int index)
 {
 	return sines[index];
+}
+
+const tw::Stack& tw::SinManager::getStack()
+{
+	stack.clear();
+	for (int i = 0; i < count(); ++i)
+		stack.addSin(sines[i]);
+	return stack;
 }
