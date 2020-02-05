@@ -11,6 +11,7 @@ namespace tw
 		int tick;
 		int size;
 		double power;
+		double frequency;
 		std::vector<int> sin_array;
 
 	public:
@@ -22,15 +23,14 @@ namespace tw
 		Sin(const double frequency, const int sampling_rate, const double power);
 
 		const int getSin();
-	};
 
-	/**
-	* サイン波のジェネレータクラス
-	*/
-	class SinGenerator
-	{
-	public:
+		const double getFrequency() const;
 
+		const double getPower() const;
+
+		const int getSize() const;
+
+		const int getTick() const;
 	};
 
 	/**
@@ -46,5 +46,24 @@ namespace tw
 		void addSin(Sin& sin_wave);
 
 		void clear();
+	};
+
+	/**
+	* サイン波のジェネレータクラス
+	*/
+	class SinManager
+	{
+		std::vector<Sin> sines;
+		Stack stack;
+		const int sampling_rate;
+
+	public:
+		SinManager(const int sampling_rate);
+
+		void addSin(const double frequency, const double power);
+
+		const int count() const;
+
+		Sin& getSin(const int index);
 	};
 }

@@ -99,10 +99,15 @@ namespace tw
 			god::controller->Start();
 		}
 
-		if (s3d::SimpleGUI::Button(U"’âŽ~", Vec2(64, 0), unspecified, god::start_flag))
+		if (s3d::SimpleGUI::Button(U"’âŽ~", Vec2(64 + 64, 0), unspecified, god::start_flag))
 		{
 			god::start_flag = false;
 			god::controller->Stop();
+		}
+
+		if (s3d::SimpleGUI::Button(U"’Ç‰Á", Vec2(0, 64), unspecified, !god::start_flag))
+		{
+
 		}
 
 		return State::CREATE_SOUND_SOURCE;

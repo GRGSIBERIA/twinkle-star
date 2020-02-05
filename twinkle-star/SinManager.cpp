@@ -1,7 +1,7 @@
 #define _USE_MATH_DEFINES
 #include <cmath>
 #include <assert.h>
-#include "SinGenerator.h"
+#include "SinManager.h"
 
 
 inline const int computeSize(const double frequency, const int sampling_rate)
@@ -42,6 +42,26 @@ const int tw::Sin::getSin()
 	return val;
 }
 
+const double tw::Sin::getFrequency() const
+{
+	return frequency;
+}
+
+const double tw::Sin::getPower() const
+{
+	return power;
+}
+
+const int tw::Sin::getSize() const
+{
+	return size;
+}
+
+const int tw::Sin::getTick() const
+{
+	return tick;
+}
+
 tw::Stack::Stack(const size_t sample_size)
 	: stack()
 {
@@ -57,4 +77,24 @@ void tw::Stack::addSin(Sin& sin_wave)
 void tw::Stack::clear()
 {
 	std::fill(stack.begin(), stack.end(), 0);
+}
+
+tw::SinManager::SinManager(const int sampling_rate)
+	: sines(), stack(sampling_rate), sampling_rate(sampling_rate)
+{
+}
+
+void tw::SinManager::addSin(const double frequency, const double power)
+{
+	sines.emplace_back(frequency, sampling_rate, power);
+}
+
+const int tw::SinManager::count() const
+{
+	return sines.size();
+}
+
+tw::Sin& tw::SinManager::getSin(const int index)
+{
+	return sines[index];
 }
