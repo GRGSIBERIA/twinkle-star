@@ -59,7 +59,7 @@ namespace tw
 	public:
 		SinManager(const int sample_size);
 
-		void addSin(const double frequency, const double power);
+		void addSin(const double frequency, const int sampling_rate, const double power);
 
 		const int count() const;
 
