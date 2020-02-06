@@ -24,6 +24,9 @@ void Main()
 		case tw::State::SELECT_OUTPUT_CHANNEL:
 			state = tw::SelectOutputChannel(font);
 			break;
+		case tw::State::SELECT_ARDUINO:
+			state = tw::SelectArduinoPort(font);
+			break;
 		case tw::State::CREATE_SOUND_SOURCE:
 			state = tw::CreateSoundSource(font);
 			break;

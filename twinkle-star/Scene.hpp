@@ -8,6 +8,7 @@ namespace tw
 	enum State {
 		SELECT_INTERFACE,
 		SELECT_OUTPUT_CHANNEL,
+		SELECT_ARDUINO,
 		CREATE_SOUND_SOURCE
 	};
 
@@ -79,7 +80,7 @@ namespace tw
 				if (region.leftClicked())
 				{
 					if (god::succeeded = god::controller->InitializeDriver(i))
-						return State::CREATE_SOUND_SOURCE;
+						return State::SELECT_ARDUINO;
 				}
 			}
 
@@ -90,6 +91,33 @@ namespace tw
 		return State::SELECT_OUTPUT_CHANNEL;
 	}
 
+	State SelectArduinoPort(const Font& font)
+	{
+		font(U"楽器のCOMポートを選択してください").draw(0, 0, god::font_color);
+
+		const Array<SerialPortInfo> ports = System::EnumerateSerialPorts();
+		const Array<String> informations = ports.map([](const SerialPortInfo& info) {
+			return U"{}, {}"_fmt(info.port, info.description);
+		}) << U"none";
+
+		for (int i = 0; i < ports.size(); ++i)
+		{
+			const auto region = font(informations[i]).draw(32, (i + 1) * 32, god::font_color);
+
+			if (region.mouseOver())
+			{
+				Circle(8, 32 * (i + 1) - 16, 4).draw(god::font_color);
+				if (region.leftClicked())
+				{
+					god::serial = Serial();
+					god::serialInformation = ports[i];
+					// god::serial.open(god::serialInformation.port);
+				}
+			}
+		}
+
+		return State::SELECT_ARDUINO;
+	}
 
 	State CreateSoundSource(const Font& font)
 	{

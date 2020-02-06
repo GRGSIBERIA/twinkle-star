@@ -14,6 +14,8 @@ namespace tw
 
 		std::wstring driver_name;
 		SoundMakeController* controller;
+		Serial serial;
+		SerialPortInfo serialInformation;
 		bool succeeded = true;
 		bool start_flag = false;
 	}
