@@ -100,18 +100,36 @@ namespace tw
 			return U"{}, {}"_fmt(info.port, info.description);
 		}) << U"none";
 
-		for (int i = 0; i < ports.size(); ++i)
+		// シリアルポートを使わない場合
 		{
-			const auto region = font(informations[i]).draw(32, (i + 1) * 32, god::font_color);
+			const auto region = font(U"NONE").draw(32, 32, god::font_color);
 
 			if (region.mouseOver())
 			{
-				Circle(8, 32 * (i + 1) - 16, 4).draw(god::font_color);
+				Circle(8, 64 - 16, 4).draw(god::font_color);
+				if (region.leftClicked())
+				{
+					god::not_use_serial = true;
+					return State::CREATE_SOUND_SOURCE;
+				}
+			}
+		}
+
+		// シリアルポートを使う場合
+		for (int i = 0; i < ports.size(); ++i)
+		{
+			const auto region = font(informations[i]).draw(32, (i + 2) * 32, god::font_color);
+
+			if (region.mouseOver())
+			{
+				Circle(8, 32 * (i + 2) - 16, 4).draw(god::font_color);
 				if (region.leftClicked())
 				{
 					god::serial = Serial();
 					god::serialInformation = ports[i];
 					// god::serial.open(god::serialInformation.port);
+
+					return State::CREATE_SOUND_SOURCE;
 				}
 			}
 		}
