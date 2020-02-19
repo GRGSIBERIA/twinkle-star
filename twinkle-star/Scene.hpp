@@ -137,6 +137,11 @@ namespace tw
 		return State::SELECT_ARDUINO;
 	}
 
+	constexpr auto xposition(const int i, const int offset)
+	{
+		return 32 * i + 8 * i;
+	}
+
 	State CreateSoundSource(const Font& font)
 	{
 		if (s3d::SimpleGUI::Button(U"çƒê∂", Vec2(0, 0), unspecified, !god::start_flag))
@@ -151,9 +156,61 @@ namespace tw
 			god::controller->Stop();
 		}
 
-		if (s3d::SimpleGUI::Button(U"í«â¡", Vec2(0, 64), unspecified, !god::start_flag))
-		{
+		const int keyheight = 64;
+		const int keywidth = 24;
 
+		const int top_under = Window::ClientHeight() - keyheight;
+		const int bottom2 = Window::ClientHeight() - 32;
+		const int top_up = top_under - keyheight - 32;
+		const int bottom1 = bottom2 - keyheight - 32;
+
+		const auto keys = {
+			Rect(xposition(1, 0), top_under, keywidth, -keyheight),
+			Rect(xposition(2, 0), top_under, keywidth, -keyheight),
+			Rect(xposition(3, 0), top_under, keywidth, -keyheight)
+		};
+		const auto majmin = {
+			Rect(xposition(4, 0), top_under, keywidth, -keyheight)
+		};
+		const auto penta = { 
+			Rect(xposition(5, 0), top_under, keywidth, -keyheight)
+		};
+
+		const auto modes = { 
+			Rect(xposition(8, 0), top_up, keywidth, -keyheight),
+			Rect(xposition(9, 0), top_up, keywidth, -keyheight),
+			Rect(xposition(10, 0), top_up, keywidth, -keyheight)
+		};
+
+		const auto chords = { 
+			Rect(xposition(2, 0), top_up, keywidth, -keyheight),
+			Rect(xposition(3, 0), top_up, keywidth, -keyheight),
+			Rect(xposition(4, 0), top_up, keywidth, -keyheight)
+		};
+
+		const auto octaves = { 
+			Rect(xposition(7, 0), top_under, keywidth, -keyheight),
+			Rect(xposition(11, 0), top_under, keywidth, -keyheight)
+
+		};
+
+		const auto tones = { 
+			Rect(xposition(8, 0), top_under, keywidth, -keyheight),
+			Rect(xposition(9, 0), top_under, keywidth, -keyheight),
+			Rect(xposition(10, 0), top_under, keywidth, -keyheight)
+		};
+
+		const auto rects = { keys, majmin, penta, modes, chords, octaves, tones };
+
+		font(U"ç∂éË").draw(xposition(2, 0), Window::ClientHeight() - 48, god::font_color);
+		font(U"âEéË").draw(xposition(8, 0), Window::ClientHeight() - 48, god::font_color);
+
+		for (const auto& line : rects)
+		{
+			for (const auto& rect : line)
+			{
+				rect.draw(god::theme_color);
+			}
 		}
 
 		return State::CREATE_SOUND_SOURCE;
